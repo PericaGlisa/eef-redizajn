@@ -1,8 +1,7 @@
 import { Link } from "wouter";
 import { Product } from "@/lib/data";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ShoppingCart, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface ProductCardProps {
   product: Product;
@@ -10,51 +9,55 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <div className="group bg-white border border-border rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col h-full relative">
-      {/* Badge */}
-      {product.isNew && (
-        <Badge className="absolute top-3 left-3 z-10 bg-accent hover:bg-accent/90 text-white border-none shadow-sm rounded-sm px-2">
-          NOVO
-        </Badge>
-      )}
+    <div className="group relative bg-white border border-border overflow-hidden transition-all duration-700 hover:border-accent flex flex-col h-full">
+      {/* Editorial Numbering */}
+      <div className="absolute top-4 right-4 text-[4rem] font-black text-black/[0.03] leading-none select-none z-0 group-hover:text-accent/5 transition-colors">
+        {product.id.padStart(2, '0')}
+      </div>
 
-      {/* Image Container */}
+      {/* Image Section */}
       <Link href={`/product/${product.id}`}>
-        <div className="aspect-square bg-secondary/30 p-8 flex items-center justify-center relative cursor-pointer overflow-hidden">
-          <img 
+        <div className="aspect-[4/5] bg-[#fdfdfd] p-12 flex items-center justify-center relative cursor-pointer overflow-hidden z-10">
+          <motion.img 
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             src={product.image} 
             alt={product.name} 
-            className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500 ease-out"
+            className="w-full h-full object-contain mix-blend-multiply"
           />
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
+          {product.isNew && (
+            <div className="absolute top-0 left-0 bg-accent text-white px-4 py-1 text-[10px] font-black uppercase tracking-[0.2em]">
+              Elite Release
+            </div>
+          )}
         </div>
       </Link>
 
       {/* Content */}
-      <div className="p-5 flex flex-col flex-1">
-        <div className="mb-2">
-          <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">{product.brand}</span>
+      <div className="p-8 flex flex-col flex-1 z-10 bg-white">
+        <div className="flex items-center gap-2 mb-4">
+          <span className="h-px w-4 bg-accent" />
+          <span className="text-[10px] font-black text-accent uppercase tracking-widest">{product.brand}</span>
         </div>
         
         <Link href={`/product/${product.id}`}>
-          <h3 className="font-heading font-semibold text-foreground text-lg leading-tight mb-2 line-clamp-2 hover:text-primary transition-colors cursor-pointer">
+          <h3 className="font-heading font-bold text-primary text-xl leading-tight mb-6 hover:text-accent transition-colors cursor-pointer tracking-tighter uppercase">
             {product.name}
           </h3>
         </Link>
         
-        <div className="mt-auto pt-4 flex items-end justify-between gap-4 border-t border-border/50">
+        <div className="mt-auto pt-6 flex items-center justify-between border-t border-border">
           <div className="flex flex-col">
-            <span className="text-[0.65rem] text-muted-foreground uppercase font-semibold">Cena</span>
-            <span className={`font-bold text-lg ${product.price ? 'text-primary' : 'text-accent'}`}>
+            <span className="text-[10px] text-muted-foreground uppercase font-black tracking-widest mb-1">Valuation</span>
+            <span className="font-black text-xl tracking-tighter text-primary group-hover:text-accent transition-colors">
               {product.price 
                 ? `${product.price.toLocaleString('sr-RS')} RSD` 
-                : 'Na upit'}
+                : 'UPON REQUEST'}
             </span>
           </div>
-          
-          <Button size="icon" className="h-10 w-10 rounded-full bg-primary hover:bg-accent text-white shadow-sm transition-all duration-300 group-hover:scale-110">
-            <ShoppingCart className="h-4 w-4" />
-          </Button>
+          <Link href={`/product/${product.id}`}>
+            <span className="text-[10px] font-black border-b border-primary group-hover:border-accent group-hover:text-accent transition-all cursor-pointer py-1">DETAILS</span>
+          </Link>
         </div>
       </div>
     </div>
