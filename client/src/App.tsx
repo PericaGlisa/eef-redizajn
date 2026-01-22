@@ -3,11 +3,12 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { SmoothScrollProvider } from "@/context/SmoothScrollContext";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import ProductList from "@/pages/ProductList";
 import ProductDetail from "@/pages/ProductDetail";
-import { ScrollToTop } from "@/components/ScrollToTop"; // I'll create this utility
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 function Router() {
   return (
@@ -23,11 +24,13 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <ScrollToTop />
-        <Router />
-      </TooltipProvider>
+      <SmoothScrollProvider>
+        <TooltipProvider>
+          <Toaster />
+          <ScrollToTop />
+          <Router />
+        </TooltipProvider>
+      </SmoothScrollProvider>
     </QueryClientProvider>
   );
 }

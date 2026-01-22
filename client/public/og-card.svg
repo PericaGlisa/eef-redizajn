@@ -1,0 +1,39 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background: Dark Slate/Navy -->
+  <rect width="1200" height="630" fill="#020617"/>
+  
+  <!-- Decorative Glows - Brand Primary Indigo -->
+  <circle cx="0" cy="0" r="500" fill="#343A8E" opacity="0.2" filter="url(#blur)"/>
+  <circle cx="1200" cy="630" r="500" fill="#343A8E" opacity="0.2" filter="url(#blur)"/>
+  
+  <defs>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="60" />
+    </filter>
+  </defs>
+
+  <!-- Content Group Centered -->
+  <g transform="translate(600, 315)" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif">
+    
+    <!-- Snowflake Icon (Scaled up and centered above text) - Brand Indigo -->
+    <g transform="translate(-60, -140) scale(5)" stroke="#343A8E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+       <path d="M2 12h20" />
+       <path d="M12 2v20" />
+       <path d="m20 2-6 6" />
+       <path d="m4 2 6 6" />
+       <path d="m20 22-6-6" />
+       <path d="m4 22 6-6" />
+       <path d="m10 2 2 3.5L14 2" />
+       <path d="m10 22 2-3.5L14 22" />
+       <path d="m2 10 3.5 2L2 14" />
+       <path d="m22 10-3.5 2 3.5 2" />
+    </g>
+    
+    <!-- Main Title -->
+    <text y="80" fill="white" font-size="80" font-weight="900" letter-spacing="-1" style="text-transform: uppercase;">EKO ELEKTROFRIGO</text>
+    
+    <!-- Tagline with Brand Green accent line -->
+    <line x1="-100" y1="120" x2="100" y2="120" stroke="#2EB85C" stroke-width="4" />
+    <text y="170" fill="#94a3b8" font-size="32" font-weight="600" letter-spacing="4" style="text-transform: uppercase;">Elitni Standard u KGH</text>
+  </g>
+</svg>
