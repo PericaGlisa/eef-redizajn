@@ -91,8 +91,8 @@ export default function ProductCard({ product }: ProductCardProps) {
     </div>
 
     {/* Quick View Dialog Content */}
-    <DialogContent className="max-w-5xl w-[95vw] md:w-full p-0 overflow-y-auto bg-white border-none rounded-none shadow-2xl max-h-[90vh] focus:outline-none">
-      <div className="grid grid-cols-1 md:grid-cols-2 h-auto md:h-[600px] lg:h-[650px]">
+    <DialogContent className="max-w-5xl w-[95vw] md:w-full p-0 overflow-y-auto md:overflow-hidden bg-white border-none rounded-none shadow-2xl max-h-[90vh] focus:outline-none">
+      <div className="grid grid-cols-1 md:grid-cols-2 h-auto md:h-[80vh] md:max-h-[650px]">
         {/* Left Side - Image */}
         <div className="bg-white p-6 md:p-12 flex items-center justify-center relative overflow-hidden group/image min-h-[250px] md:min-h-0">
           <motion.div 
